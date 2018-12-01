@@ -1,7 +1,7 @@
 package com.dija.fulcrum.Controller
 import android.os.Build
 import android.support.annotation.RequiresApi
-import com.dija.fulcrum.data.PlaceAutoCompleteAPI
+import com.dija.fulcrum.`interface`.PlaceAutoCompleteAPI
 import com.dija.fulcrum.data.Prediction
 import retrofit2.Retrofit
 import com.google.gson.GsonBuilder
@@ -26,7 +26,7 @@ class RetrofitController : Callback<Prediction> {
 
         val call = placeAutoCompleteAPI.loadPredictions("199 pope road")
 
-        call.enqueue(this)
+    //    call.enqueue(this)
 
     }
 
