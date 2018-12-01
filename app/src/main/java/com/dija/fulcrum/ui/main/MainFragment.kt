@@ -7,12 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dija.fulcrum.R
+import com.dija.fulcrum.Controller.RetrofitController
+
+
+
+
 
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
+
+    private lateinit var retro : RetrofitController
 
     private lateinit var viewModel: MainViewModel
 
@@ -27,6 +34,9 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+        retro = RetrofitController()
+        retro.start()
+
     }
 
 }
