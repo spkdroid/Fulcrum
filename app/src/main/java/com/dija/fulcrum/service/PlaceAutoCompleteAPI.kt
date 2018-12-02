@@ -1,10 +1,8 @@
-package com.dija.fulcrum.`interface`
+package com.dija.fulcrum.service
 
-import com.dija.fulcrum.Controller.RetrofitController
 import com.dija.fulcrum.data.Prediction
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

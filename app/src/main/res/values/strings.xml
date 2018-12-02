@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">fulcrum</string>
+    <string name="examplepredicttext">e.g 123 Street Name</string>
 </resources>
