@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:gravity="center"
+>
 
     <TextView
             android:id="@+id/predictedAddressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:hint="Sample"
             android:textColor="@color/black"
-            android:padding="20dp"/>
+            android:padding="10dp"
+    />
 
 </LinearLayout>
