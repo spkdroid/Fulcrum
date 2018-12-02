@@ -3,14 +3,11 @@ package com.dija.fulcrum.ui.main
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.dija.fulcrum.service.PlaceAutoCompleteAPI
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.main_fragment.*
 import java.util.concurrent.TimeUnit
 
 class MainViewModel : ViewModel() {
@@ -26,11 +23,6 @@ class MainViewModel : ViewModel() {
         if(address.size>0)
             address.clear()
     }
-
-    fun getAddressInformation(): ArrayList<String> {
-        return address
-    }
-
 
     @SuppressLint("CheckResult")
     fun loadAddressPrediction(search:String, context:Context, suggestionList: RecyclerView) {
@@ -52,8 +44,6 @@ class MainViewModel : ViewModel() {
                 { error -> Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show() }
             )
     }
-
-
 }
 
 
