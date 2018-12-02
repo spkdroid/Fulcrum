@@ -9,12 +9,30 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.dija.fulcrum.R
 import kotlinx.android.synthetic.main.main_fragment.*
 import com.dija.fulcrum.adapter.AddressAdapter
+import android.app.Activity
+import com.dija.fulcrum.service.IntentServiceResult
+import org.greenrobot.eventbus.EventBus
+import android.content.Intent
+import android.widget.AbsListView
+import android.widget.TextView
+import com.dija.fulcrum.adapter.ClickListener
+import com.dija.fulcrum.adapter.RecyclerTouchListener
 
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment() , AddressAdapter.EventHandler {
+
+     fun onHandleIntent(intent: Intent) {
+        // do some work
+        EventBus.getDefault().post(IntentServiceResult(Activity.RESULT_OK, "done!!"))
+    }
+
+    override fun handle(position: Int) {
+    Toast.makeText(context,Int.toString(),Toast.LENGTH_LONG).show()
+    }
 
     companion object {
         fun newInstance() = MainFragment()
@@ -37,7 +55,23 @@ class MainFragment : Fragment() {
         suggestionList.layoutManager = LinearLayoutManager(context)
         suggestionList.adapter = AddressAdapter(viewModel.address, requireContext())
 
-        autoCompleteTextView?.addTextChangedListener(object : TextWatcher {
+        suggestionList.addOnItemTouchListener(
+            RecyclerTouchListener(
+                this!!.activity!!,
+                suggestionList, object : ClickListener {
+
+                    override fun onClick(view: View, position: Int) {
+                    autoCompleteTextView.setText(viewModel.address[position])
+                    }
+
+                    override fun onLongClick(view: View, position: Int) {
+                    }
+                })
+        )
+
+
+
+                    autoCompleteTextView?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(searchString: Editable?) {
                 viewModel.clearAddress()
                 viewModel.loadAddressPrediction(searchString.toString(), context!!,suggestionList)
@@ -53,5 +87,3 @@ class MainFragment : Fragment() {
     }
 
     }
-
-

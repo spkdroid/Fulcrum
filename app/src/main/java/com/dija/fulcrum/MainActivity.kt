@@ -3,6 +3,9 @@ package com.dija.fulcrum
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.dija.fulcrum.ui.main.MainFragment
+import org.greenrobot.eventbus.EventBus
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,5 +18,7 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
     }
+
+
 
 }
