@@ -9,30 +9,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.dija.fulcrum.R
 import kotlinx.android.synthetic.main.main_fragment.*
 import com.dija.fulcrum.adapter.AddressAdapter
-import android.app.Activity
-import com.dija.fulcrum.service.IntentServiceResult
-import org.greenrobot.eventbus.EventBus
-import android.content.Intent
-import android.widget.AbsListView
-import android.widget.TextView
 import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
 
 
-class MainFragment : Fragment() , AddressAdapter.EventHandler {
-
-     fun onHandleIntent(intent: Intent) {
-        // do some work
-        EventBus.getDefault().post(IntentServiceResult(Activity.RESULT_OK, "done!!"))
-    }
-
-    override fun handle(position: Int) {
-    Toast.makeText(context,Int.toString(),Toast.LENGTH_LONG).show()
-    }
+class MainFragment : Fragment()  {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -69,8 +53,6 @@ class MainFragment : Fragment() , AddressAdapter.EventHandler {
                 })
         )
 
-
-
                     autoCompleteTextView?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(searchString: Editable?) {
                 viewModel.clearAddress()
@@ -83,7 +65,5 @@ class MainFragment : Fragment() , AddressAdapter.EventHandler {
             override fun onTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
-
     }
-
-    }
+}
