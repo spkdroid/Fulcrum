@@ -4,6 +4,10 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph.xml"
             app:startDestination="@id/mainFragment">
 
-    <fragment android:id="@+id/mainFragment" android:name="com.dija.fulcrum.ui.main.MainFragment"
-              android:label="main_fragment" tools:layout="@layout/main_fragment"/>
+    <fragment android:id="@+id/mainFragment" android:name="com.dija.fulcrum.fragment.AddressFragment"
+              android:label="main_fragment" tools:layout="@layout/address_fragment">
+        <action android:id="@+id/action_mainFragment_to_insuraceFragment" app:destination="@id/insuraceFragment"/>
+    </fragment>
+    <fragment android:id="@+id/insuraceFragment" android:name="com.dija.fulcrum.fragment.InsuraceFragment"
+              android:label="InsuraceFragment"/>
 </navigation>

@@ -18,10 +18,6 @@ import android.view.GestureDetector
 class AddressAdapter(val items : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>()
      {
 
-     val handler: EventHandler? = null
-
-
-
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -39,9 +35,6 @@ class AddressAdapter(val items : ArrayList<String>, val context: Context) : Recy
         holder?.predictedAddressText?.text = items.get(position)
     }
 
-    interface EventHandler {
-        fun handle(position:Int)
-    }
 }
 
 

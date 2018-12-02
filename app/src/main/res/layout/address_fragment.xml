@@ -6,7 +6,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainFragment"
+        tools:context=".fragment.AddressFragment"
         android:background="#FFFFFF"
         tools:layout_editor_absoluteY="81dp">
     <TextView
@@ -27,7 +27,7 @@
             android:background="#FFFFFF"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:id="@+id/button"
+            android:id="@+id/nextbutton"
             android:typeface="normal" android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/suggestionList"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -49,5 +49,5 @@
             android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/suggestionList" app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/button"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/nextbutton"/>
 </android.support.constraint.ConstraintLayout>

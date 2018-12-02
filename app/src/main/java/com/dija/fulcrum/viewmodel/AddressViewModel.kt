@@ -1,4 +1,4 @@
-package com.dija.fulcrum.ui.main
+package com.dija.fulcrum.viewmodel
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModel
@@ -10,10 +10,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class MainViewModel : ViewModel() {
+class AddressViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 
-     var address: ArrayList<String> = ArrayList()
+    var address: ArrayList<String> = ArrayList()
+
+    var validationFlag:Boolean = false
 
     private val placeAutoCompleteAPI by lazy {
         PlaceAutoCompleteAPI.create()
