@@ -1,9 +1,6 @@
 package com.dija.fulcrum
 
-import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import android.support.v7.widget.RecyclerView
-import com.dija.fulcrum.R.id.suggestionList
 import com.dija.fulcrum.viewmodel.AddressViewModel
 import org.junit.Assert
 import org.junit.Test

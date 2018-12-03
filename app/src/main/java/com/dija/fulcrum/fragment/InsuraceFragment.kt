@@ -14,17 +14,15 @@ import com.dija.fulcrum.R
 import com.dija.fulcrum.adapter.BaseAdapter
 import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
-import com.dija.fulcrum.data.CarriersData
 import com.dija.fulcrum.service.dialog.MessageDialog
 import com.dija.fulcrum.viewmodel.InsuraceViewModel
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.insurace_fragment.*
 
 class InsuraceFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
 
-         if(!(viewModel.carrierSelectedValidFlag(insuranceInputText.text.toString()) && insuranceInputText.text.isNotEmpty()))
+         if(!(viewModel.carrierSelectedValidFlag(insuranceInputField.text.toString()) && insuranceInputField.text.isNotEmpty()))
              messageService.showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
         else
              messageService.showDoneDialog("Thank You","Success",(context as Activity?)!!)
@@ -50,8 +48,6 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
         // TODO: Use the ViewModel
 
         viewModel.LoadCarrierArray(resources)
-        //viewModel.carriersFilterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
-        //viewModel.carrierMasterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
 
         insuranceProviders.layoutManager = LinearLayoutManager(context)
         insuranceProviders.adapter = BaseAdapter(viewModel.carriersFilterArray!!.insuranceCarriers as ArrayList<String>, requireContext())
@@ -62,7 +58,7 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
                 insuranceProviders, object : ClickListener {
 
                     override fun onClick(view: View, position: Int) {
-                        insuranceInputText.setText(viewModel.carriersFilterArray!!.insuranceCarriers[position])
+                        insuranceInputField.setText(viewModel.carriersFilterArray!!.insuranceCarriers[position])
                     }
 
                     override fun onLongClick(view: View, position: Int) {
@@ -70,7 +66,7 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
                 })
         )
 
-        insuranceInputText?.addTextChangedListener(object : TextWatcher {
+        insuranceInputField?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(searchString: Editable?) {
 
                 viewModel.clearCarrierArray()
@@ -89,7 +85,6 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
             override fun onTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
-
         confirmInsuranceButton.setOnClickListener(this)
     }
 }
