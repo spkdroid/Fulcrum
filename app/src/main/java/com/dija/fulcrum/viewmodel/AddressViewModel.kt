@@ -1,11 +1,15 @@
 package com.dija.fulcrum.viewmodel
 
 import android.annotation.SuppressLint
+import android.app.usage.NetworkStats
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
+import com.dija.fulcrum.R
 import com.dija.fulcrum.service.PlaceAutoCompleteAPI
+import com.dija.fulcrum.service.dialog.MessageDialog
+import com.dija.fulcrum.util.network.AppStatus
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -46,8 +50,15 @@ class AddressViewModel : ViewModel() {
                         suggestionList.adapter!!.notifyDataSetChanged()
                     }
                 },
-                { error -> Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show() }
-            )
+                { error ->
+                    run {
+
+                       if(!AppStatus.getInstance(context).isOnline)
+                       {
+                           MessageDialog().showInternetIssueDialog("Network Issue",context.getString(R.string.InternetWarningMessage),context)
+                       }
+                    }
+                })
     }
 }
 

@@ -14,12 +14,12 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/questiontext"
+            android:id="@+id/addressQuestionText"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:layout_marginTop="35dp"
             android:layout_marginBottom="7dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/addressInputField" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
     <Button
             android:text="Next"
@@ -27,27 +27,27 @@
             android:background="#FFFFFF"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:id="@+id/nextbutton"
+            android:id="@+id/confirmAddressNextButton"
             android:typeface="normal" android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/suggestionList"
+            app:layout_constraintTop_toBottomOf="@+id/addressSuggestionList"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="49dp"
             android:gravity="center"
-            android:id="@+id/autoCompleteTextView"
+            android:id="@+id/addressInputField"
             android:textStyle="bold"
             android:background="#FFFFFF"
-            android:hint="@string/examplepredicttext"
-            app:layout_constraintTop_toBottomOf="@+id/questiontext" android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/suggestionList"
+            android:hint="@string/AddressHintText"
+            app:layout_constraintTop_toBottomOf="@+id/addressQuestionText" android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/addressSuggestionList"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp" android:layout_marginEnd="4dp" android:layout_marginRight="4dp"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="344dp"
             android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/suggestionList" app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/nextbutton"/>
+            android:id="@+id/addressSuggestionList" app:layout_constraintTop_toBottomOf="@+id/addressInputField"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/confirmAddressNextButton"/>
 </android.support.constraint.ConstraintLayout>

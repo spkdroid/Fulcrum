@@ -3,7 +3,6 @@ package com.dija.fulcrum
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
-import com.dija.fulcrum.fragment.AddressFragment
 
 class MainActivity : AppCompatActivity() {
 

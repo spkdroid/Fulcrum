@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Fulcrum</string>
-    <string name="examplepredicttext">e.g 123 Street Name</string>
+    <string name="AddressHintText">e.g 123 Street Name</string>
     <string name="InsuranceHintText">e.g Geico</string>
+    <string name="InternetWarningMessage">No Connection, Please enable the Mobile data or Wifi</string>
 </resources>

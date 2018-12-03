@@ -17,22 +17,20 @@ import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
 import com.dija.fulcrum.viewmodel.AddressViewModel
 import kotlinx.android.synthetic.main.address_fragment.*
-import android.support.v7.app.AlertDialog
-import com.dija.fulcrum.service.dialog.DialogService
-import com.dija.fulcrum.service.dialog.WarningDialog
+import com.dija.fulcrum.service.dialog.MessageDialog
 
 class AddressFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
 
-        if(viewModel.addressSelectedValidFlag(autoCompleteTextView.text.toString()) && autoCompleteTextView.text.isNotEmpty()) {
+        if(viewModel.addressSelectedValidFlag(addressInputField.text.toString()) && addressInputField.text.isNotEmpty()) {
 
             if (view != null) {
                 Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_insuraceFragment)
             }
         }
         else
-         WarningDialog().showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
+         MessageDialog().showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
 
     }
 
@@ -55,16 +53,16 @@ class AddressFragment : Fragment(), View.OnClickListener {
 
         viewModel = ViewModelProviders.of(this).get(AddressViewModel::class.java)
         // TODO: Use the ViewModel
-        suggestionList.layoutManager = LinearLayoutManager(context)
-        suggestionList.adapter = BaseAdapter(viewModel.address, requireContext())
+        addressSuggestionList.layoutManager = LinearLayoutManager(context)
+        addressSuggestionList.adapter = BaseAdapter(viewModel.address, requireContext())
 
-        suggestionList.addOnItemTouchListener(
+        addressSuggestionList.addOnItemTouchListener(
             RecyclerTouchListener(
                 this!!.activity!!,
-                suggestionList, object : ClickListener {
+                addressSuggestionList, object : ClickListener {
 
                     override fun onClick(view: View, position: Int) {
-                        autoCompleteTextView.setText(viewModel.address[position])
+                        addressInputField.setText(viewModel.address[position])
                     }
 
                     override fun onLongClick(view: View, position: Int) {
@@ -72,10 +70,10 @@ class AddressFragment : Fragment(), View.OnClickListener {
                 })
         )
 
-        autoCompleteTextView?.addTextChangedListener(object : TextWatcher {
+        addressInputField?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(searchString: Editable?) {
                 viewModel.clearAddress()
-                viewModel.loadAddressPrediction(searchString.toString(), context!!, suggestionList)
+                viewModel.loadAddressPrediction(searchString.toString(), context!!, addressSuggestionList)
             }
 
             override fun beforeTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -85,6 +83,6 @@ class AddressFragment : Fragment(), View.OnClickListener {
             }
         })
 
-        nextbutton.setOnClickListener(this)
+        confirmAddressNextButton.setOnClickListener(this)
     }
 }

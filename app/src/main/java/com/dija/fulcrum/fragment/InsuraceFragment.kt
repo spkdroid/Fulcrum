@@ -15,7 +15,7 @@ import com.dija.fulcrum.adapter.BaseAdapter
 import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
 import com.dija.fulcrum.data.CarriersData
-import com.dija.fulcrum.service.dialog.WarningDialog
+import com.dija.fulcrum.service.dialog.MessageDialog
 import com.dija.fulcrum.viewmodel.InsuraceViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.insurace_fragment.*
@@ -25,11 +25,14 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
 
          if(!(viewModel.carrierSelectedValidFlag(insuranceInputText.text.toString()) && insuranceInputText.text.isNotEmpty()))
-             WarningDialog().showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
+             messageService.showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
+        else
+             messageService.showDoneDialog("Thank You","Success",(context as Activity?)!!)
     }
 
     companion object {
         fun newInstance() = InsuraceFragment()
+        var messageService = MessageDialog()
     }
 
     private lateinit var viewModel: InsuraceViewModel
