@@ -64,7 +64,7 @@ fun Init(){
 
 
     @Test
-fun completeInsuranceTest(){
+fun completeInsuranceTest() {
         Espresso.onView(ViewMatchers.withId(R.id.insuranceInputField))
             .perform(ViewActions.typeText("AAA"))
 
