@@ -49,8 +49,9 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
         viewModel = ViewModelProviders.of(this).get(InsuraceViewModel::class.java)
         // TODO: Use the ViewModel
 
-        viewModel.carriersFilterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
-        viewModel.carrierMasterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
+        viewModel.LoadCarrierArray(resources)
+        //viewModel.carriersFilterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
+        //viewModel.carrierMasterArray = Gson().fromJson(viewModel.readTextFile(resources), CarriersData::class.java)
 
         insuranceProviders.layoutManager = LinearLayoutManager(context)
         insuranceProviders.adapter = BaseAdapter(viewModel.carriersFilterArray!!.insuranceCarriers as ArrayList<String>, requireContext())

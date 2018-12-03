@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.content.res.Resources
 import com.dija.fulcrum.R
 import com.dija.fulcrum.data.CarriersData
+import com.google.gson.Gson
 
 class InsuraceViewModel : ViewModel() {
     
@@ -11,9 +12,12 @@ class InsuraceViewModel : ViewModel() {
     var carrierMasterArray: CarriersData? = null
 
 
-    fun readTextFile(
-        resources: Resources
-    ): String {
+    fun LoadCarrierArray(resources: Resources){
+        carriersFilterArray = Gson().fromJson(readTextFile(resources), CarriersData::class.java)
+        carrierMasterArray = Gson().fromJson(readTextFile(resources), CarriersData::class.java)
+    }
+
+    fun readTextFile(resources: Resources): String {
         val inputStream = resources.openRawResource(R.raw.carriers)
             val carrierJsonString = ByteArray(inputStream.available())
             inputStream.read(carrierJsonString)
