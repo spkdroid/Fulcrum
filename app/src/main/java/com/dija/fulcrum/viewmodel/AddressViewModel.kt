@@ -1,13 +1,11 @@
 package com.dija.fulcrum.viewmodel
 
 import android.annotation.SuppressLint
-import android.app.usage.NetworkStats
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.widget.Toast
 import com.dija.fulcrum.R
-import com.dija.fulcrum.service.PlaceAutoCompleteAPI
+import com.dija.fulcrum.service.AddressAutoCompleteAPI
 import com.dija.fulcrum.service.dialog.MessageDialog
 import com.dija.fulcrum.util.network.AppStatus
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,7 +19,7 @@ class AddressViewModel : ViewModel() {
 
 
     private val placeAutoCompleteAPI by lazy {
-        PlaceAutoCompleteAPI.create()
+        AddressAutoCompleteAPI.create()
     }
 
     fun clearAddress(){

@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface PlaceAutoCompleteAPI {
+interface AddressAutoCompleteAPI {
 
     @GET("api/place/autocomplete/json?types=address&key=AIzaSyBnMJjJXi3cyIVxzhdlYyaCG3PPQ4huF78")
     fun loadPredictions(@Query("input") address: String): Observable<Prediction>
@@ -19,7 +19,7 @@ interface PlaceAutoCompleteAPI {
 
         private val BASE_URL = "https://maps.googleapis.com/maps/"
 
-        fun create(): PlaceAutoCompleteAPI {
+        fun create(): AddressAutoCompleteAPI {
             val gson = GsonBuilder()
                 .setLenient()
                 .create()
@@ -30,7 +30,7 @@ interface PlaceAutoCompleteAPI {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
 
-            return retrofit.create(PlaceAutoCompleteAPI::class.java)
+            return retrofit.create(AddressAutoCompleteAPI::class.java)
         }
     }
 
