@@ -6,16 +6,51 @@
         android:id="@+id/insurace"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.insurace.InsuraceFragment">
+        android:background="#FFFFFF"
+        tools:context=".fragment.InsuraceFragment">
 
     <TextView
-            android:id="@+id/message"
+            android:text="What is your insurance?"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="InsuraceFragment"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/InsurancePageQuestion"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="7dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextView" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+            android:text="Next"
+            android:textColor="@color/red"
+            android:background="#FFFFFF"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:id="@+id/ConfirmInsuranceButton"
+            android:typeface="normal" android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/InsuranceProviders"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.994"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:gravity="center"
+            android:id="@+id/InsuranceInputText"
+            android:textStyle="bold"
+            android:background="#FFFFFF"
+            android:hint="@string/InsuranceHintText"
+            app:layout_constraintTop_toBottomOf="@+id/InsurancePageQuestion" android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/suggestionList"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp" android:layout_marginEnd="4dp" android:layout_marginRight="4dp"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="344dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/InsuranceProviders" app:layout_constraintTop_toBottomOf="@+id/InsuranceInputText"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/ConfirmInsuranceButton"/>
 
 </android.support.constraint.ConstraintLayout>

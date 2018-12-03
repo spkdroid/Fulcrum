@@ -10,13 +10,10 @@ import android.widget.Toast
 import com.dija.fulcrum.R
 import kotlinx.android.synthetic.main.address_list_item.view.*
 import android.view.MotionEvent
-import android.text.method.Touch.onTouchEvent
 import android.view.GestureDetector
 
-
-
-class AddressAdapter(val items : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>()
-     {
+class BaseAdapter(val items : ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>()
+{
 
 
     // Gets the number of animals in the list

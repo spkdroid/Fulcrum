@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dija.fulcrum.R
-import com.dija.fulcrum.adapter.AddressAdapter
+import com.dija.fulcrum.adapter.BaseAdapter
 import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
 import com.dija.fulcrum.viewmodel.AddressViewModel
@@ -55,7 +55,7 @@ class AddressFragment : Fragment(), View.OnClickListener {
         viewModel = ViewModelProviders.of(this).get(AddressViewModel::class.java)
         // TODO: Use the ViewModel
         suggestionList.layoutManager = LinearLayoutManager(context)
-        suggestionList.adapter = AddressAdapter(viewModel.address, requireContext())
+        suggestionList.adapter = BaseAdapter(viewModel.address, requireContext())
 
         suggestionList.addOnItemTouchListener(
             RecyclerTouchListener(
