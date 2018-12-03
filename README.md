@@ -1,7 +1,8 @@
 # Fulcrum
 
+<div height=200 width=200>
 ![](sample_video.gif)
-
+</div>
 ## Getting Started
 
 Just clone and import into the Android Studio. Perform the gradle build and perform a build operation to generate the apk file. <br>
@@ -9,7 +10,7 @@ Just clone and import into the Android Studio. Perform the gradle build and perf
 The apk file can be downloaded from the following link <br>
 
 <strong>
-<a href="http://www.spkdroid.com/News/app.apk">Download Now!!</a>
+<a href="https://github.com/spkdroid/Fulcrum/blob/master/app-debug.apk">Download Now!!</a>
 </strong>
 
 
