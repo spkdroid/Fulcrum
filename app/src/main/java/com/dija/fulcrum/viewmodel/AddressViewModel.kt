@@ -15,7 +15,6 @@ class AddressViewModel : ViewModel() {
 
     var address: ArrayList<String> = ArrayList()
 
-    var validationFlag:Boolean = false
 
     private val placeAutoCompleteAPI by lazy {
         PlaceAutoCompleteAPI.create()
@@ -24,6 +23,10 @@ class AddressViewModel : ViewModel() {
     fun clearAddress(){
         if(address.size>0)
             address.clear()
+    }
+
+    fun addressSelectedValidFlag(selectedOption:String):Boolean {
+        return address.contains(selectedOption)
     }
 
     @SuppressLint("CheckResult")

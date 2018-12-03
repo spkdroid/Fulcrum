@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">fulcrum</string>
+    <string name="app_name">Fulcrum</string>
     <string name="examplepredicttext">e.g 123 Street Name</string>
     <string name="InsuranceHintText">e.g Geico</string>
-
 </resources>

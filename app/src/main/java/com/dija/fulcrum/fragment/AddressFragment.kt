@@ -1,5 +1,6 @@
 package com.dija.fulcrum.fragment
 
+import android.app.Activity
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,7 +10,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dija.fulcrum.R
 import com.dija.fulcrum.adapter.BaseAdapter
@@ -17,22 +17,23 @@ import com.dija.fulcrum.adapter.ClickListener
 import com.dija.fulcrum.adapter.RecyclerTouchListener
 import com.dija.fulcrum.viewmodel.AddressViewModel
 import kotlinx.android.synthetic.main.address_fragment.*
-
+import android.support.v7.app.AlertDialog
+import com.dija.fulcrum.service.dialog.DialogService
+import com.dija.fulcrum.service.dialog.WarningDialog
 
 class AddressFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
 
-        if(viewModel.validationFlag && autoCompleteTextView.text.isNotEmpty()) {
-            Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
+        if(viewModel.addressSelectedValidFlag(autoCompleteTextView.text.toString()) && autoCompleteTextView.text.isNotEmpty()) {
 
             if (view != null) {
                 Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_insuraceFragment)
             }
         }
-        else {
-            Toast.makeText(context, "Failure", Toast.LENGTH_LONG).show()
-        }
+        else
+         WarningDialog().showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
+
     }
 
     companion object {
@@ -64,7 +65,6 @@ class AddressFragment : Fragment(), View.OnClickListener {
 
                     override fun onClick(view: View, position: Int) {
                         autoCompleteTextView.setText(viewModel.address[position])
-                        viewModel.validationFlag = true
                     }
 
                     override fun onLongClick(view: View, position: Int) {
@@ -76,7 +76,6 @@ class AddressFragment : Fragment(), View.OnClickListener {
             override fun afterTextChanged(searchString: Editable?) {
                 viewModel.clearAddress()
                 viewModel.loadAddressPrediction(searchString.toString(), context!!, suggestionList)
-                viewModel.validationFlag = false
             }
 
             override fun beforeTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
