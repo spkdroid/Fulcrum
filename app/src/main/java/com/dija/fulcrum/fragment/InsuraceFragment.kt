@@ -4,12 +4,12 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.dija.fulcrum.R
 import com.dija.fulcrum.adapter.BaseAdapter
 import com.dija.fulcrum.adapter.ClickListener
@@ -41,9 +41,11 @@ class InsuraceFragment : Fragment() {
         // TODO: Use the ViewModel
 
         val jsonData = viewModel.readTextFile(resources)
-        val carrierArray =  Gson().fromJson(jsonData, CarriersData::class.java)
 
-        InsuranceProviders.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
+        val carrierArray = Gson().fromJson(jsonData, CarriersData::class.java)
+        val carrierMasterData = Gson().fromJson(jsonData, CarriersData::class.java)
+
+        InsuranceProviders.layoutManager = LinearLayoutManager(context)
         InsuranceProviders.adapter = BaseAdapter(carrierArray.insuranceCarriers as ArrayList<String>, requireContext())
 
         InsuranceProviders.addOnItemTouchListener(
@@ -62,13 +64,15 @@ class InsuraceFragment : Fragment() {
 
         InsuranceInputText?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(searchString: Editable?) {
-                carrierArray.insuranceCarriers.filter {
-                        s -> s == searchString.toString()
+
+                carrierArray.insuranceCarriers.clear()
+
+                carrierMasterData.insuranceCarriers.forEach {
+                    if(it.contains(searchString.toString()))
+                        carrierArray.insuranceCarriers.add(it)
                 }
+
                 InsuranceProviders.adapter!!.notifyDataSetChanged()
-               // viewModel.clearAddress()
-               // viewModel.loadAddressPrediction(searchString.toString(), context!!, suggestionList)
-               // viewModel.validationFlag = false
             }
 
             override fun beforeTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -77,9 +81,5 @@ class InsuraceFragment : Fragment() {
             override fun onTextChanged(searchString: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
-
-
-
-
     }
 }
