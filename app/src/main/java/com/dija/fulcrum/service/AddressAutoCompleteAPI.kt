@@ -15,6 +15,7 @@ interface AddressAutoCompleteAPI {
     fun loadPredictions(@Query("input") address: String): Observable<Prediction>
 
 
+    /*
     companion object {
 
         private val BASE_URL = "https://maps.googleapis.com/maps/"
@@ -32,10 +33,5 @@ interface AddressAutoCompleteAPI {
 
             return retrofit.create(AddressAutoCompleteAPI::class.java)
         }
-    }
-
-
-
-
-
+    }*/
 }
