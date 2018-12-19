@@ -4,10 +4,10 @@ This is a simple two page application that built on top of Google Map address AP
 
 The following set of libraries are used in this project
 
-[x] RxJava
-[x] Retrofit
-[x] Dagger 2
-[x] GSON
+- [x] RxJava
+- [x] Retrofit
+- [x] Dagger 2
+- [x] GSON
 
 ## Design Pattern
  MVVM 
