@@ -21,23 +21,23 @@ class AddressViewModel : ViewModel() {
     var address: ArrayList<String> = ArrayList()
 
     init {
-       DaggerNetworkComponent.builder().build().inject(this)
+        DaggerNetworkComponent.builder().build().inject(this)
     }
 
     @Inject
-    lateinit var placeAutoCompleteAPI:Retrofit
+    lateinit var placeAutoCompleteAPI: Retrofit
 
-    fun clearAddress(){
-        if(address.size>0)
+    fun clearAddress() {
+        if (address.size > 0)
             address.clear()
     }
 
-    fun addressSelectedValidFlag(selectedOption:String):Boolean {
+    fun addressSelectedValidFlag(selectedOption: String): Boolean {
         return address.contains(selectedOption)
     }
 
     @SuppressLint("CheckResult")
-    fun loadAddressPrediction(search:String, context:Context, suggestionList: RecyclerView) {
+    fun loadAddressPrediction(search: String, context: Context, suggestionList: RecyclerView) {
 
         val mService = placeAutoCompleteAPI.create(AddressAutoCompleteAPI::class.java)
 
@@ -49,8 +49,8 @@ class AddressViewModel : ViewModel() {
                 { result ->
                     run {
                         val actualList = result!!.getPredictions()
-                        actualList.forEach {
-                                prediction_ -> address.add(prediction_.description)
+                        actualList.forEach { prediction_ ->
+                            address.add(prediction_.description)
                         }
                         suggestionList.adapter!!.notifyDataSetChanged()
                     }
@@ -58,10 +58,13 @@ class AddressViewModel : ViewModel() {
                 { error ->
                     run {
 
-                       if(!AppStatus.getInstance(context).isOnline)
-                       {
-                           MessageDialog().showInternetIssueDialog("Network Issue",context.getString(R.string.InternetWarningMessage),context)
-                       }
+                        if (!AppStatus.getInstance(context).isOnline) {
+                            MessageDialog().showInternetIssueDialog(
+                                "Network Issue",
+                                context.getString(R.string.InternetWarningMessage),
+                                context
+                            )
+                        }
                     }
                 })
     }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.support.v7.app.AlertDialog
 import com.dija.fulcrum.R
 
-class MessageDialog:DialogService{
+class MessageDialog : DialogService {
 
     override fun showInternetIssueDialog(title: String, message: String, context: Context) {
 

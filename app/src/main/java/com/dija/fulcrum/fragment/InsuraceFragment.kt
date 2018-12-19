@@ -22,10 +22,14 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
 
-         if(!(viewModel.carrierSelectedValidFlag(insuranceInputField.text.toString()) && insuranceInputField.text.isNotEmpty()))
-             messageService.showWarningDialog("No Option Selected","Please Select an option to continue",(context as Activity?)!!)
+        if (!(viewModel.carrierSelectedValidFlag(insuranceInputField.text.toString()) && insuranceInputField.text.isNotEmpty()))
+            messageService.showWarningDialog(
+                "No Option Selected",
+                "Please Select an option to continue",
+                (context as Activity?)!!
+            )
         else
-             messageService.showDoneDialog("Thank You","Success",(context as Activity?)!!)
+            messageService.showDoneDialog("Thank You", "Success", (context as Activity?)!!)
     }
 
     companion object {
@@ -45,12 +49,12 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(InsuraceViewModel::class.java)
-        // TODO: Use the ViewModel
-
+  
         viewModel.LoadCarrierArray(resources)
 
         insuranceProviders.layoutManager = LinearLayoutManager(context)
-        insuranceProviders.adapter = BaseAdapter(viewModel.carriersFilterArray!!.insuranceCarriers as ArrayList<String>, requireContext())
+        insuranceProviders.adapter =
+                BaseAdapter(viewModel.carriersFilterArray!!.insuranceCarriers as ArrayList<String>, requireContext())
 
         insuranceProviders.addOnItemTouchListener(
             RecyclerTouchListener(
@@ -72,7 +76,7 @@ class InsuraceFragment : Fragment(), View.OnClickListener {
                 viewModel.clearCarrierArray()
 
                 viewModel.carrierMasterArray!!.insuranceCarriers.forEach {
-                    if(it.contains(searchString.toString()))
+                    if (it.contains(searchString.toString()))
                         viewModel.carriersFilterArray!!.insuranceCarriers.add(it)
                 }
 

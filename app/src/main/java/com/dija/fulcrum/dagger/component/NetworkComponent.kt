@@ -9,6 +9,7 @@ import javax.inject.Singleton
 @Singleton
 @Component( modules = arrayOf(NetModule::class))
 interface NetworkComponent {
+
     fun inject(activity: MainActivity)
 
     fun inject(addressViewModel: AddressViewModel)

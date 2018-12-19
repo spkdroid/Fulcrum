@@ -3,7 +3,6 @@ package com.dija.fulcrum.util.network
 import android.content.Context
 import android.net.ConnectivityManager
 
-
 class AppStatus {
 
     private lateinit var connectivityManager: ConnectivityManager
@@ -11,17 +10,13 @@ class AppStatus {
 
     val isOnline: Boolean
         get() {
-            try {
-                connectivityManager = context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            connectivityManager = context
+                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-                val networkInfo = connectivityManager.activeNetworkInfo
-                connected = networkInfo != null && networkInfo.isAvailable &&
-                        networkInfo.isConnected
-                return connected
-
-            } catch (e: Exception) {
-             }
+            val networkInfo = connectivityManager.activeNetworkInfo
+            connected = networkInfo != null && networkInfo.isAvailable &&
+                    networkInfo.isConnected
+            return connected
 
             return connected
         }
