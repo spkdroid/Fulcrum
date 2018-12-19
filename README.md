@@ -2,6 +2,9 @@
 
 This is a simple two page application that built on top of Google Map address API. 
 
+The first page of the application would prompt you to search your address. The second page would prompt you
+to search for a insurance carrier.
+
 The following set of libraries are used in this project
 
 - [x] RxJava
@@ -10,12 +13,14 @@ The following set of libraries are used in this project
 - [x] GSON
 
 ## Design Pattern
- MVVM 
+ Model View ViewModel (MVVM)
 
-## Navigation Component
+## Navigation Architecture Component
 Jetpack Navigation
 
+## Application Workflow Video
 ![](sample_video.gif)
+
 ## Download
 <strong>
 <a href="https://github.com/spkdroid/Fulcrum/blob/master/app-debug.apk">Download Now!!</a>
