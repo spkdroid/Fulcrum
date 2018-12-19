@@ -1,9 +1,6 @@
 # Fulcrum
 
-This is a simple two page application that built on top of Google Map address API. 
-
-The first page of the application would prompt you to search your address. The second page would prompt you
-to search for a insurance carrier.
+This is a simple two page application that is built to showcase Google Map address API. The first page of the application would prompt you to search your address. Based on the address provided by the user the application would hit the Google Map address API and return a suggestion list to the user. The second page would prompt you to search for a insurance carrier. The JSON data for the insurance carrier is stored in the res directory of the project. 
 
 The following set of libraries are used in this project
 
